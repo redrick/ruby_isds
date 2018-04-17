@@ -11,27 +11,23 @@ module RubyIsds
       request = Net::HTTP::Post.new(uri)
       default_headers.each { |k, v| request[k] = v  }
       request.body = self.to_xml
-      binding.pry
+      request.basic_auth RubyIsds.configuration.username,
+        RubyIsds.configuration.password
       response = Net::HTTP.start(uri.hostname, uri.port,
                                  use_ssl: uri.scheme == 'https') do |http|
         http.request(request)
       end
-      response
+      ::RubyIsds::Response.new(response)
     end
 
     def default_headers
       {
         'Content-Type' =>  'text/xml;charset=UTF-8',
-        'Authorization' => "Basic #{auth}",
         'Accept-Encoding' => 'gzip,deflate'
       }
     end
 
-    def auth
-      Base64.encode64("#{RubyIsds.configuration.username}:#{RubyIsds.configuration.password}")
-    end
-
-    def to_xml 
+    def to_xml
       Nokogiri::XML::Builder.new(encoding: 'utf-8') do |xml|
         xml[:soapenv].Envelope(envelope_namespaces) {
           xml[:soapenv].Header
