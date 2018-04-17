@@ -28,10 +28,17 @@ module RubyIsds
       @env
     end
 
-    def api_url
+    def api_domain
       case @env
-      when :production then 'https://ws1c.mojedatovaschranka.cz/'
-      else 'https://ws1.czebox.cz/'
+      when :production then 'https://ws1c.mojedatovaschranka.cz'
+      else 'https://ws1.czebox.cz'
+      end
+    end
+
+    def xml_url
+      case @env
+      when :production then 'mojedatovaschranka.cz'
+      else 'czechpoint.cz'
       end
     end
   end
