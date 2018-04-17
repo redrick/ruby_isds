@@ -1,7 +1,7 @@
 require 'net/http'
 require 'base64'
 require 'nokogiri'
-require 'active_support/all'
+require 'active_support/core_ext/hash'
 
 require 'ruby_isds/utils/errors'
 
@@ -10,10 +10,14 @@ require 'ruby_isds/configuration'
 require 'ruby_isds/request'
 require 'ruby_isds/response'
 
-require 'ruby_isds/web_services/find_data_box'
-require 'ruby_isds/web_services/d_t_info'
-require 'ruby_isds/web_services/get_data_box_activity_status'
-require 'ruby_isds/web_services/check_data_box'
+require 'ruby_isds/web_services/db_search/find_data_box'
+require 'ruby_isds/web_services/db_search/d_t_info'
+require 'ruby_isds/web_services/db_search/get_data_box_activity_status'
+require 'ruby_isds/web_services/db_search/check_data_box'
+
+require 'ruby_isds/web_services/dm_info/get_list_of_received_messages'
+
+require 'ruby_isds/web_services/dm_operations/message_download'
 
 
 module RubyIsds
