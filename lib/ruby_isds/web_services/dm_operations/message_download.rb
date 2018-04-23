@@ -19,6 +19,10 @@ module RubyIsds
         def xml_url
           "http://isds.#{RubyIsds.configuration.xml_url}/v20"
         end
+
+        def response_wrapper
+          ::RubyIsds::Responses::Message
+        end
       end
     end
   end

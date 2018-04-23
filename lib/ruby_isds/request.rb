@@ -17,7 +17,7 @@ module RubyIsds
                                  use_ssl: uri.scheme == 'https') do |http|
         http.request(request)
       end
-      ::RubyIsds::Response.new(response)
+      response_wrapper.new(response)
     end
 
     def default_headers
@@ -84,6 +84,14 @@ module RubyIsds
     #
     def xml_url
       "http://#{RubyIsds.configuration.xml_url}"
+    end
+
+    ##
+    # Here you can change which response object will wrap the reponse
+    #   reponse object has to inherit from `::RubyIsds::Response`
+    #
+    def response_wrapper
+      ::RubyIsds::Response
     end
   end
 end
