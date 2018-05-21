@@ -10,8 +10,12 @@ require 'ruby_isds/configuration'
 require 'ruby_isds/request'
 require 'ruby_isds/response'
 
+require 'ruby_isds/responses/body'
+require 'ruby_isds/responses/status'
 require 'ruby_isds/responses/message'
 require 'ruby_isds/responses/messages/attachment'
+
+require 'ruby_isds/web_services/db_access/change_isds_password'
 
 require 'ruby_isds/web_services/db_search/find_data_box'
 require 'ruby_isds/web_services/db_search/d_t_info'
