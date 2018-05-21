@@ -1,6 +1,6 @@
 module RubyIsds
   class Response
-    attr_accessor :response, :status, :body
+    attr_accessor :status, :body
 
     def initialize(response)
       @response = Hash.from_xml(response.body)
