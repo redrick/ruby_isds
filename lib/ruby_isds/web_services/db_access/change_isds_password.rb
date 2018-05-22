@@ -1,7 +1,7 @@
 module RubyIsds
   module WebServices
     module DbAccess
-      class ChangeIsdsPassword < ::RubyIsds::Request
+      class ChangeIsdsPassword < ::RubyIsds::WebServices::DbSearch::Request
         ATTRS = [:dbOldPassword, :dbNewPassword]
 
         attr_accessor *ATTRS

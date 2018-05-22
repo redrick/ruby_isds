@@ -1,7 +1,7 @@
 module RubyIsds
   module WebServices
     module DmInfo
-      class ConfirmDelivery < ::RubyIsds::Request
+      class ConfirmDelivery < ::RubyIsds::WebServices::DmInfo::Request
         ATTRS = [:dmID]
 
         attr_accessor *ATTRS
