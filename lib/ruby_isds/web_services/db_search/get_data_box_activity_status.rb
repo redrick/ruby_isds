@@ -1,7 +1,7 @@
 module RubyIsds
   module WebServices
     module DbSearch
-      class GetDataBoxActivityStatus < ::RubyIsds::Request
+      class GetDataBoxActivityStatus < ::RubyIsds::WebServices::DbSearch::Request
         ATTRS = [:dbID, :baFrom, :baTo]
 
         attr_accessor *ATTRS

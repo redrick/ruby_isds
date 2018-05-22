@@ -1,7 +1,7 @@
 module RubyIsds
   module WebServices
     module DbSearch
-      class FindDataBox < ::RubyIsds::Request
+      class FindDataBox < ::RubyIsds::WebServices::DbSearch::Request
         ATTRS = [:dbOwnerInfo, :dbID, :dbType, :ic, :pnFirstName, :pnMiddleName,
           :pnLastName, :pnLastNameAtBirth, :firmName, :biDate, :biCity, :biCounty,
           :biState, :adCity, :adStreet, :adNumberInStreet, :adNumberInMunicipality,

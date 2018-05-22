@@ -4,7 +4,7 @@
 module RubyIsds
   module WebServices
     module DbSearch
-      class GetDataBoxList < ::RubyIsds::Request
+      class GetDataBoxList < ::RubyIsds::WebServices::DbSearch::Request
         ATTRS = [:dblType]
 
         attr_accessor *ATTRS

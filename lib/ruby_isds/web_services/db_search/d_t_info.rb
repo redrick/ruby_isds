@@ -1,7 +1,7 @@
 module RubyIsds
   module WebServices
     module DbSearch
-      class DTInfo < ::RubyIsds::Request
+      class DTInfo < ::RubyIsds::WebServices::DbSearch::Request
         ATTRS = [:dbId]
 
         attr_accessor *ATTRS

@@ -1,7 +1,7 @@
 module RubyIsds
   module WebServices
     module DbSearch
-      class PDZInfo < ::RubyIsds::Request
+      class PDZInfo < ::RubyIsds::WebServices::DbSearch::Request
         ATTRS = [:PDZSender]
 
         attr_accessor *ATTRS

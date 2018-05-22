@@ -1,7 +1,7 @@
 module RubyIsds
   module WebServices
     module DbSearch
-      class IsdsSearch2 < ::RubyIsds::Request
+      class IsdsSearch2 < ::RubyIsds::WebServices::DbSearch::Request
         ATTRS = [:searchText, :searchType, :searchScope, :page, :pageSize,
                  :highlighting]
 

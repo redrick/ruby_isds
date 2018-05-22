@@ -12,11 +12,17 @@ require 'ruby_isds/response'
 
 require 'ruby_isds/responses/body'
 require 'ruby_isds/responses/status'
+require 'ruby_isds/responses/db/status'
+require 'ruby_isds/responses/dm/status'
+require 'ruby_isds/responses/dm/body'
+require 'ruby_isds/responses/db/body'
 require 'ruby_isds/responses/message'
 require 'ruby_isds/responses/messages/attachment'
 
 require 'ruby_isds/web_services/db_access/change_isds_password'
 
+require 'ruby_isds/web_services/db_search/response'
+require 'ruby_isds/web_services/db_search/request'
 require 'ruby_isds/web_services/db_search/find_data_box'
 require 'ruby_isds/web_services/db_search/d_t_info'
 require 'ruby_isds/web_services/db_search/get_data_box_activity_status'
@@ -28,7 +34,10 @@ require 'ruby_isds/web_services/db_search/isds_search_2'
 require 'ruby_isds/web_services/db_search/p_d_z_info'
 require 'ruby_isds/web_services/db_search/p_d_z_send_info'
 
+require 'ruby_isds/web_services/dm_info/request'
+require 'ruby_isds/web_services/dm_info/response'
 require 'ruby_isds/web_services/dm_info/get_list_of_received_messages'
+require 'ruby_isds/web_services/dm_info/confirm_delivery'
 
 require 'ruby_isds/web_services/dm_operations/message_download'
 

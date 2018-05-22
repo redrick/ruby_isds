@@ -1,19 +1,19 @@
 module RubyIsds
   module WebServices
-    module DbSearch
-      class PDZSendInfo < ::RubyIsds::WebServices::DbSearch::Request
-        ATTRS = [:dbId, :PDZType]
+    module DmInfo
+      class ConfirmDelivery < ::RubyIsds::Request
+        ATTRS = [:dmID]
 
         attr_accessor *ATTRS
 
         def body(xml)
-          xml[:v20].PDZSendInfo {
+          xml[:v20].ConfirmDelivery {
             values(xml)
           }
         end
 
         def api_url
-          '/DS/df'
+          '/DS/dx'
         end
 
         def xml_url

@@ -1,7 +1,7 @@
 module RubyIsds
   module WebServices
     module DbSearch
-      class CheckDataBox < ::RubyIsds::Request
+      class CheckDataBox < ::RubyIsds::WebServices::DbSearch::Request
         ATTRS = [:dbID, :dbApproved, :dbExternRefNumber]
 
         attr_accessor *ATTRS

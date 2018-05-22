@@ -4,8 +4,6 @@ module RubyIsds
 
     def initialize(response)
       @response = Hash.from_xml(response.body)
-      @status = ::RubyIsds::Responses::Status.new(parsed_body['dbStatus'])
-      @body = ::RubyIsds::Responses::Body.new(parsed_body)
     end
 
     def parsed_body

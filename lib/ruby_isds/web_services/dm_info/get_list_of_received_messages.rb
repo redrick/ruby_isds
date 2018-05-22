@@ -1,7 +1,7 @@
 module RubyIsds
   module WebServices
     module DmInfo
-      class GetListOfReceivedMessages < ::RubyIsds::Request
+      class GetListOfReceivedMessages < ::RubyIsds::WebServices::DmInfo::Request
         ATTRS = [:dmFromTime, :dmToTime, :dmRecipientOrgUnitNum,
                  :dmStatusFilter, :dmOffset, :dmLimit]
 
