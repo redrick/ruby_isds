@@ -22,6 +22,11 @@ require 'ruby_isds/web_services/db_search/d_t_info'
 require 'ruby_isds/web_services/db_search/get_data_box_activity_status'
 require 'ruby_isds/web_services/db_search/check_data_box'
 require 'ruby_isds/web_services/db_search/data_box_credit_info'
+require 'ruby_isds/web_services/db_search/find_personal_data_box'
+require 'ruby_isds/web_services/db_search/get_data_box_list'
+require 'ruby_isds/web_services/db_search/isds_search_2'
+require 'ruby_isds/web_services/db_search/p_d_z_info'
+require 'ruby_isds/web_services/db_search/p_d_z_send_info'
 
 require 'ruby_isds/web_services/dm_info/get_list_of_received_messages'
 
