@@ -48,7 +48,14 @@ require 'ruby_isds/web_services/dm_info/mark_message_as_downloaded'
 require 'ruby_isds/web_services/dm_info/message_envelope_download'
 require 'ruby_isds/web_services/dm_info/verify_message'
 
+require 'ruby_isds/web_services/dm_operations/authenticate_message'
+require 'ruby_isds/web_services/dm_operations/create_message'
+require 'ruby_isds/web_services/dm_operations/create_multiple_message'
 require 'ruby_isds/web_services/dm_operations/message_download'
+require 'ruby_isds/web_services/dm_operations/ping'
+require 'ruby_isds/web_services/dm_operations/resign_isds_document'
+require 'ruby_isds/web_services/dm_operations/signed_message_download'
+require 'ruby_isds/web_services/dm_operations/signed_sent_message_download'
 
 
 module RubyIsds
