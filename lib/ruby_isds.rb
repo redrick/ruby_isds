@@ -36,8 +36,17 @@ require 'ruby_isds/web_services/db_access/change_isds_password'
 
 require 'ruby_isds/web_services/dm_info/request'
 require 'ruby_isds/web_services/dm_info/response'
-require 'ruby_isds/web_services/dm_info/get_list_of_received_messages'
 require 'ruby_isds/web_services/dm_info/confirm_delivery'
+require 'ruby_isds/web_services/dm_info/erase_message'
+require 'ruby_isds/web_services/dm_info/get_delivery_info'
+require 'ruby_isds/web_services/dm_info/get_list_of_received_messages'
+require 'ruby_isds/web_services/dm_info/get_list_of_sent_messages'
+require 'ruby_isds/web_services/dm_info/get_message_author'
+require 'ruby_isds/web_services/dm_info/get_message_state_changes'
+require 'ruby_isds/web_services/dm_info/get_signed_delivery_info'
+require 'ruby_isds/web_services/dm_info/mark_message_as_downloaded'
+require 'ruby_isds/web_services/dm_info/message_envelope_download'
+require 'ruby_isds/web_services/dm_info/verify_message'
 
 require 'ruby_isds/web_services/dm_operations/message_download'
 
