@@ -15,6 +15,10 @@ module RubyIsds
         def response_wrapper
           ::RubyIsds::Responses::Message
         end
+
+        def call_reponse_wrapper(response)
+          response_wrapper.new(response).message
+        end
       end
     end
   end

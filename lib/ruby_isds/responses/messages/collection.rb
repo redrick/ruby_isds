@@ -4,9 +4,12 @@ module RubyIsds
       class Collection < ::RubyIsds::Response
         def initialize(response)
           super
-          # results.map do |result|
-          #   ::RubyIsds::Responses::Message.new(result)
-          # end
+        end
+
+        def messages
+          results.map do |result|
+            ::RubyIsds::DataMessage.new(result)
+          end
         end
 
         private

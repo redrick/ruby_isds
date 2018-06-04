@@ -1,26 +1,21 @@
 module RubyIsds
   module Responses
     class Message < ::RubyIsds::Response
-      attr_accessor :attachments
-
       def initialize(response)
         super
-        binding.pry
-        load_attachments
       end
 
-      def load_attachments
-        @attachments = if attachments_xml_part.is_a?(Array)
-          attachments_xml_part.map do |attachment|
-            ::RubyIsds::Responses::Messages::Attachment.new(attachment)
-          end
-        else
-          ::RubyIsds::Responses::Messages::Attachment.new(attachments_xml_part)
-        end
+      def message
+        ::RubyIsds::DataMessage.new(message_hash)
       end
 
-      def attachments_xml_part
-        parsed_body['dmReturnedMessage']['dmDm']['dmFiles']['dmFile']
+      private
+
+      def message_hash
+        type = parsed_body['dmReturnedMessage'].first
+        hash = parsed_body['dmReturnedMessage']['dmDm']
+        hash.delete('xmlns:p')
+        hash = type.first == 'dmType' ? hash.merge(type.first => type.last) : hash
       end
     end
   end

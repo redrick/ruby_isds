@@ -17,6 +17,10 @@ module RubyIsds
                                  use_ssl: uri.scheme == 'https') do |http|
         http.request(request)
       end
+      call_reponse_wrapper(response)
+    end
+
+    def call_reponse_wrapper(response)
       response_wrapper.new(response)
     end
 
