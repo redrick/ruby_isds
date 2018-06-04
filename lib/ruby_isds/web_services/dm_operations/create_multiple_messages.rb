@@ -4,7 +4,7 @@
 module RubyIsds
   module WebServices
     module DmOperations
-      class CreateMultipleMessage < ::RubyIsds::WebServices::DmOperations::Request
+      class CreateMultipleMessages < ::RubyIsds::WebServices::DmOperations::Request
         ATTRS = [:dmSenderOrgUnit, :dmSenderOrgUnitNum, :dbIDRecipient,
                  :dmRecipientOrgUnit, :dmRecipientOrgUnitNum, :dmToHands,
                  :dmAnnotation, :dmRecipientRefNumber, :dmSenderRefNumber,
