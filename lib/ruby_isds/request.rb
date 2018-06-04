@@ -54,8 +54,7 @@ module RubyIsds
     #
     def values(xml)
       self.class::ATTRS.each do |attribute|
-        value = instance_variable_get("@#{attribute}")
-        next unless value
+        value = instance_variable_get("@#{attribute}") || ''
         xml[:v20].public_send(attribute, value)
       end
     end

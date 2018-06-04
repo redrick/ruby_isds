@@ -5,6 +5,7 @@ module RubyIsds
 
       def initialize(response)
         super
+        binding.pry
         load_attachments
       end
 
@@ -19,7 +20,7 @@ module RubyIsds
       end
 
       def attachments_xml_part
-        body[result_key]['dmReturnedMessage']['dmDm']['dmFiles']['dmFile']
+        parsed_body['dmReturnedMessage']['dmDm']['dmFiles']['dmFile']
       end
     end
   end

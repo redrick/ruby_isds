@@ -12,6 +12,10 @@ module RubyIsds
             values(xml)
           }
         end
+
+        def response_wrapper
+          ::RubyIsds::Responses::Messages::Collection
+        end
       end
     end
   end

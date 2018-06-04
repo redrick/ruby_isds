@@ -21,6 +21,7 @@ require 'ruby_isds/responses/dm/body'
 require 'ruby_isds/responses/db/body'
 require 'ruby_isds/responses/message'
 require 'ruby_isds/responses/messages/attachment'
+require 'ruby_isds/responses/messages/collection'
 
 require 'ruby_isds/web_services/db_search/response'
 require 'ruby_isds/web_services/db_search/request'

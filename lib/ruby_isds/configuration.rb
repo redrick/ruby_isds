@@ -1,11 +1,17 @@
 module RubyIsds
   class Configuration
-    attr_writer :username, :password, :env, :api_url
+    attr_writer :data_box, :username, :password, :env, :api_url
 
     def initialize
       @username = nil
       @password = nil
+      @data_box = nil
       @env = nil
+    end
+
+    def data_box
+      raise ConfigNotSet, 'data_box' unless @data_box
+      @data_box
     end
 
     def username
