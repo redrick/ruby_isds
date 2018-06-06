@@ -20,6 +20,14 @@ module RubyIsds
         def call_reponse_wrapper(response)
           response_wrapper.new(response).messages
         end
+
+        def response_wrapper
+          ::RubyIsds::Responses::Messages::Collection
+        end
+
+        def call_reponse_wrapper(response)
+          response_wrapper.new(response).messages
+        end
       end
     end
   end
