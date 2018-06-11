@@ -8,13 +8,13 @@ module RubyIsds
 
     def self.received(options = {})
       RubyIsds::WebServices::DmInfo::GetListOfReceivedMessages
-        .new(options.merge(dbID: 'mxbf8u6'))
+        .new(options.merge(dbID: ::RubyIsds.configuration.data_box))
         .call
     end
 
     def self.sent(options = {})
       RubyIsds::WebServices::DmInfo::GetListOfSentMessages
-        .new(options.merge(dbID: 'mxbf8u6'))
+        .new(options.merge(dbID: ::RubyIsds.configuration.data_box))
         .call
     end
   end
