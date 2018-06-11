@@ -12,6 +12,18 @@ module RubyIsds
 
     attr_accessor *ATTRIBUTES
 
+    def self.find(dmID)
+      RubyIsds::WebServices::DmOperations::MessageDownload
+        .new(dmID: dmID)
+        .call
+    end
+
+    def download(destination = '/tmp')
+      File.open("#{destination}/#{dmID}.zfo", 'wb') do |f|
+        f.write(Base64.decode64(signed.body.dmSignature))
+      end
+    end
+
     def initialize(params = {})
       @params = params
       @dmAttachments = load_attachments
@@ -25,18 +37,60 @@ module RubyIsds
 
     def verify
       RubyIsds::WebServices::DmInfo::VerifyMessage
-        .new(dmID: self.dmID)
+        .new(dmID: dmID)
         .call
     end
 
     def authenticate
       RubyIsds::WebServices::DmOperations::AuthenticateMessage
-        .new(dmID: self.dmID)
+        .new(dmMessage: signed.body.dmSignature)
         .call
     end
 
     def signed
-      
+      RubyIsds::WebServices::DmOperations::SignedMessageDownload
+        .new(dmID: dmID)
+        .call
+    end
+
+    def author
+      RubyIsds::WebServices::DmInfo::GetMessageAuthor
+        .new(dmID: dmID)
+        .call
+    end
+
+    ##
+    # FIXME: needs to parse the response.... is gibberish now...
+    def delivery_info
+      RubyIsds::WebServices::DmInfo::GetDeliveryInfo
+        .new(dmID: dmID)
+        .call
+    end
+
+    def state_changes(options = {})
+      RubyIsds::WebServices::DmInfo::GetMessageStateChanges
+        .new(options)
+        .call
+    end
+
+    ##
+    # FIXME: seems like whole message, needs that parsing also....
+    def envelope
+      RubyIsds::WebServices::DmInfo::MessageEnvelopeDownload
+        .new(dmID: dmID)
+        .call
+    end
+
+    def confirm_delivery
+      RubyIsds::WebServices::DmInfo::ConfirmDelivery
+        .new(dmID: dmID)
+        .call
+    end
+
+    def mark_as_downloaded
+      RubyIsds::WebServices::DmInfo::MarkMessageAsDownloaded
+        .new(dmID: dmID)
+        .call
     end
 
     def sent?

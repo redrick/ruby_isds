@@ -2,7 +2,7 @@ module RubyIsds
   module WebServices
     module DmOperations
       class AuthenticateMessage < ::RubyIsds::WebServices::DmOperations::Request
-        ATTRS = [:dmID]
+        ATTRS = [:dmMessage]
 
         attr_accessor *ATTRS
 
