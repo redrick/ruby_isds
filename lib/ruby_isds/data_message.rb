@@ -93,6 +93,12 @@ module RubyIsds
         .call
     end
 
+    def destroy(options = {})
+      RubyIsds::WebServices::DmInfo::EraseMessage
+        .new(options.merge(dmID: dmID))
+        .call
+    end
+
     def sent?
       dbIDSender == ::RubyIsds.configuration.data_box
     end
