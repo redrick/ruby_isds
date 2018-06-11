@@ -76,4 +76,8 @@ module RubyIsds
   def self.configure
     yield(configuration)
   end
+
+  def self.ping
+    ::RubyIsds::WebServices::DmOperations::Ping.new.call
+  end
 end

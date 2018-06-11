@@ -23,6 +23,30 @@ module RubyIsds
       end
     end
 
+    def verify
+      RubyIsds::WebServices::DmInfo::VerifyMessage
+        .new(dmID: self.dmID)
+        .call
+    end
+
+    def authenticate
+      RubyIsds::WebServices::DmOperations::AuthenticateMessage
+        .new(dmID: self.dmID)
+        .call
+    end
+
+    def signed
+      
+    end
+
+    def sent?
+      dbIDSender == ::RubyIsds.configuration.data_box
+    end
+
+    def received?
+      dbIDSender != ::RubyIsds.configuration.data_box
+    end
+
     private
 
     def load_attachments
@@ -42,12 +66,11 @@ module RubyIsds
       raise "Missing parse rule for #{value}" if value.keys.size > 1
       case value.keys.first
       when 'xsi:nil'
-        nil if value.values.first == 'true'
-        ''
+        return nil if value.values.first == 'true'
+        false
       else
-        ''
+        false
       end
-      value
     end
   end
 end

@@ -1,6 +1,6 @@
 module RubyIsds
   module WebServices
-    module DmInfo
+    module DmOperations
       class Response < ::RubyIsds::Response
         def initialize(response)
           super

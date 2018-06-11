@@ -7,6 +7,7 @@ module RubyIsds
         end
 
         def messages
+          return [::RubyIsds::DataMessage.new(results)] if results.is_a?(Hash)
           results.map do |result|
             ::RubyIsds::DataMessage.new(result)
           end
