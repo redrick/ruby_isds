@@ -12,10 +12,9 @@ module RubyIsds
       private
 
       def message_hash
-        type = parsed_body['dmReturnedMessage'].first
-        hash = parsed_body['dmReturnedMessage']['dmDm']
-        hash.delete('xmlns:p')
-        hash = type.first == 'dmType' ? hash.merge(type.first => type.last) : hash
+        hash = parsed_body['dmReturnedMessage']
+        hash['dmDm'].delete('xmlns:p')
+        hash
       end
     end
   end

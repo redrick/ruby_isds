@@ -25,9 +25,12 @@ module RubyIsds
     end
 
     def initialize(params = {})
-      @params = params
+      @params = params.dup
+      status_info = @params.delete('dmDm')
       @dmAttachments = load_attachments
-      @params.each do |key, value|
+      @dmEvents = load_events
+      unified_params = status_info ? status_info.merge(@params) : params
+      unified_params.each do |key, value|
         unless ATTRIBUTES.include?(key)
           raise "Not valid attribute of DataMessage #{key}"
         end
@@ -73,8 +76,6 @@ module RubyIsds
         .call
     end
 
-    ##
-    # FIXME: seems like whole message, needs that parsing also....
     def envelope
       RubyIsds::WebServices::DmInfo::MessageEnvelopeDownload
         .new(dmID: dmID)
@@ -109,10 +110,22 @@ module RubyIsds
 
     private
 
+    def load_events
+      return {} if @params['dmEvents'].blank?
+      events_hash = @params.delete('dmEvents')['dmEvent']
+      if events_hash.is_a?(Array)
+        events_hash.map do |event|
+          ::RubyIsds::Responses::Messages::Event.new(event)
+        end
+      else
+        ::RubyIsds::Responses::Messages::Event.new(events_hash)
+      end
+    end
+
     def load_attachments
       return {} if @params['dmFiles'].blank?
       attachments_hash = @params.delete('dmFiles')['dmFile']
-      @attachments = if attachments_hash.is_a?(Array)
+      if attachments_hash.is_a?(Array)
         attachments_hash.map do |attachment|
           ::RubyIsds::Responses::Messages::Attachment.new(attachment)
         end
