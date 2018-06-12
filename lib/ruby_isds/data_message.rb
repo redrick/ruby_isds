@@ -1,16 +1,17 @@
+# rubocop:disable Metrics/ClassLength
 module RubyIsds
   class DataMessage
     ATTRIBUTES = %w[dmType dmOrdinal dmID dbIDSender dmSender
-      dmSenderAddress dmSenderType dmRecipient dmRecipientAddress
-      dmSenderOrgUnit dmSenderOrgUnitNum dbIDRecipient dmRecipientOrgUnit
-      dmRecipientOrgUnitNum dmToHands dmAnnotation dmRecipientRefNumber
-      dmSenderRefNumber dmRecipientIdent dmSenderIdent dmLegalTitleLaw
-      dmLegalTitleYear dmLegalTitleSect dmLegalTitlePar dmLegalTitlePoint
-      dmPersonalDelivery dmAllowSubstDelivery dmMessageStatus
-      dmAttachmentSize dmDeliveryTime dmAcceptanceTime dmHash
-      dmQTimestamp dmAttachments dmAmbiguousRecipient]
+                    dmSenderAddress dmSenderType dmRecipient dmRecipientAddress
+                    dmSenderOrgUnit dmSenderOrgUnitNum dbIDRecipient dmRecipientOrgUnit
+                    dmRecipientOrgUnitNum dmToHands dmAnnotation dmRecipientRefNumber
+                    dmSenderRefNumber dmRecipientIdent dmSenderIdent dmLegalTitleLaw
+                    dmLegalTitleYear dmLegalTitleSect dmLegalTitlePar dmLegalTitlePoint
+                    dmPersonalDelivery dmAllowSubstDelivery dmMessageStatus
+                    dmAttachmentSize dmDeliveryTime dmAcceptanceTime dmHash
+                    dmQTimestamp dmAttachments dmAmbiguousRecipient].freeze
 
-    attr_accessor *ATTRIBUTES
+    attr_accessor(*ATTRIBUTES)
 
     def self.find(dmID)
       RubyIsds::WebServices::DmOperations::MessageDownload
@@ -31,9 +32,7 @@ module RubyIsds
       @dmEvents = load_events
       unified_params = status_info ? status_info.merge(@params) : params
       unified_params.each do |key, value|
-        unless ATTRIBUTES.include?(key)
-          raise "Not valid attribute of DataMessage #{key}"
-        end
+        raise "Not valid attribute of DataMessage #{key}" unless ATTRIBUTES.include?(key)
         instance_variable_set("@#{key}", parsed_value(value))
       end
     end
@@ -137,13 +136,12 @@ module RubyIsds
     def parsed_value(value)
       return value unless value.is_a?(Hash)
       raise "Missing parse rule for #{value}" if value.keys.size > 1
-      case value.keys.first
-      when 'xsi:nil'
-        return nil if value.values.first == 'true'
-        false
+      if value.keys.first == 'xsi:nil' && value.values.first == 'true'
+        nil
       else
         false
       end
     end
   end
 end
+# rubocop:enable Metrics/ClassLength

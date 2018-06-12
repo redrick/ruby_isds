@@ -2,14 +2,14 @@ module RubyIsds
   module WebServices
     module DmInfo
       class EraseMessage < ::RubyIsds::WebServices::DmInfo::Request
-        ATTRS = [:dmID, :dmIncoming]
+        ATTRS = %i[dmID dmIncoming].freeze
 
-        attr_accessor *ATTRS
+        attr_accessor(*ATTRS)
 
         def body(xml)
-          xml[:v20].EraseMessage {
+          xml[:v20].EraseMessage do
             values(xml)
-          }
+          end
         end
       end
     end

@@ -6,19 +6,20 @@ module RubyIsds
       end if params.any?
     end
 
+    # rubocop:disable Metrics/AbcSize
     def call
       uri = URI(full_url)
       request = Net::HTTP::Post.new(uri)
-      default_headers.each { |k, v| request[k] = v  }
-      request.body = self.to_xml
-      request.basic_auth RubyIsds.configuration.username,
-        RubyIsds.configuration.password
+      default_headers.each { |k, v| request[k] = v }
+      request.body = to_xml
+      request.basic_auth RubyIsds.configuration.username, RubyIsds.configuration.password
       response = Net::HTTP.start(uri.hostname, uri.port,
                                  use_ssl: uri.scheme == 'https') do |http|
         http.request(request)
       end
       call_reponse_wrapper(response)
     end
+    # rubocop:enable Metrics/AbcSize
 
     def call_reponse_wrapper(response)
       response_wrapper.new(response)
@@ -33,12 +34,12 @@ module RubyIsds
 
     def to_xml
       Nokogiri::XML::Builder.new(encoding: 'utf-8') do |xml|
-        xml[:soapenv].Envelope(envelope_namespaces) {
+        xml[:soapenv].Envelope(envelope_namespaces) do
           xml[:soapenv].Header
-          xml[:soapenv].Body {
+          xml[:soapenv].Body do
             body(xml)
-          }
-        }
+          end
+        end
       end.to_xml
     end
 

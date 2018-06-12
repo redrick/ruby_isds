@@ -2,14 +2,14 @@ module RubyIsds
   module WebServices
     module DmInfo
       class GetDeliveryInfo < ::RubyIsds::WebServices::DmInfo::Request
-        ATTRS = [:dmID]
+        ATTRS = [:dmID].freeze
 
-        attr_accessor *ATTRS
+        attr_accessor(*ATTRS)
 
         def body(xml)
-          xml[:v20].GetDeliveryInfo {
+          xml[:v20].GetDeliveryInfo do
             values(xml)
-          }
+          end
         end
 
         def response_wrapper

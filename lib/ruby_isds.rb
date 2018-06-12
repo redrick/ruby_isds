@@ -66,7 +66,6 @@ require 'ruby_isds/web_services/dm_operations/resign_isds_document'
 require 'ruby_isds/web_services/dm_operations/signed_message_download'
 require 'ruby_isds/web_services/dm_operations/signed_sent_message_download'
 
-
 module RubyIsds
   def self.configuration
     @configuration ||= Configuration.new

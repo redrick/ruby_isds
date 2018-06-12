@@ -2,14 +2,14 @@ module RubyIsds
   module WebServices
     module DmOperations
       class MessageDownload < ::RubyIsds::WebServices::DmOperations::Request
-        ATTRS = [:dmID]
+        ATTRS = [:dmID].freeze
 
-        attr_accessor *ATTRS
+        attr_accessor(*ATTRS)
 
         def body(xml)
-          xml[:v20].MessageDownload {
+          xml[:v20].MessageDownload do
             values(xml)
-          }
+          end
         end
 
         def response_wrapper

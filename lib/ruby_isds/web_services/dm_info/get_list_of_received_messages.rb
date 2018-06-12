@@ -2,15 +2,15 @@ module RubyIsds
   module WebServices
     module DmInfo
       class GetListOfReceivedMessages < ::RubyIsds::WebServices::DmInfo::Request
-        ATTRS = [:dmFromTime, :dmToTime, :dmRecipientOrgUnitNum,
-                 :dmStatusFilter, :dmOffset, :dmLimit]
+        ATTRS = %i[dmFromTime dmToTime dmRecipientOrgUnitNum
+                   dmStatusFilter dmOffset dmLimit].freeze
 
-        attr_accessor *ATTRS
+        attr_accessor(*ATTRS)
 
         def body(xml)
-          xml[:v20].GetListOfReceivedMessages {
+          xml[:v20].GetListOfReceivedMessages do
             values(xml)
-          }
+          end
         end
 
         def response_wrapper

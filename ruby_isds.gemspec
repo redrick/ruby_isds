@@ -31,8 +31,13 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake', '~> 10.0'
-  spec.add_development_dependency 'rspec', '~> 3.0'
   spec.add_development_dependency 'pry'
+
+  spec.add_development_dependency 'rspec', '~> 3.0'
+  spec.add_development_dependency 'rubocop', '~> 0.49'
+  spec.add_development_dependency 'simplecov', '~> 0.14'
+  spec.add_development_dependency 'vcr', '~> 3.0'
+  spec.add_development_dependency 'webmock', '~> 3.0'
 
   spec.add_dependency 'nokogiri'
   spec.add_dependency 'activesupport'
