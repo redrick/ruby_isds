@@ -1,0 +1,44 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <SOAP-ENV:Body>
+      <q:GetListOfSentMessagesResponse xmlns:q="http://isds.czechpoint.cz/v20" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         <q:dmRecords>
+            <q:dmRecord dmType="E">
+               <q:dmOrdinal>1</q:dmOrdinal>
+               <q:dmID>6450676</q:dmID>
+               <q:dbIDSender>mxbf8u6</q:dbIDSender>
+               <q:dmSender>Andrej Antaš</q:dmSender>
+               <q:dmSenderAddress>Pekařská 695/10a, 15500 Praha 5, CZ</q:dmSenderAddress>
+               <q:dmSenderType>40</q:dmSenderType>
+               <q:dmRecipient>Ruby s.r.o.</q:dmRecipient>
+               <q:dmRecipientAddress>Pekařská 695/10a, 15500 Praha 5, CZ</q:dmRecipientAddress>
+               <q:dmSenderOrgUnit xsi:nil="true"/>
+               <q:dmSenderOrgUnitNum>0</q:dmSenderOrgUnitNum>
+               <q:dbIDRecipient>t9jf8wy</q:dbIDRecipient>
+               <q:dmRecipientOrgUnit xsi:nil="true"/>
+               <q:dmRecipientOrgUnitNum>0</q:dmRecipientOrgUnitNum>
+               <q:dmToHands xsi:nil="true"/>
+               <q:dmAnnotation>Test</q:dmAnnotation>
+               <q:dmRecipientRefNumber xsi:nil="true"/>
+               <q:dmSenderRefNumber xsi:nil="true"/>
+               <q:dmRecipientIdent xsi:nil="true"/>
+               <q:dmSenderIdent xsi:nil="true"/>
+               <q:dmLegalTitleLaw xsi:nil="true"/>
+               <q:dmLegalTitleYear xsi:nil="true"/>
+               <q:dmLegalTitleSect xsi:nil="true"/>
+               <q:dmLegalTitlePar xsi:nil="true"/>
+               <q:dmLegalTitlePoint xsi:nil="true"/>
+               <q:dmPersonalDelivery>false</q:dmPersonalDelivery>
+               <q:dmAllowSubstDelivery>true</q:dmAllowSubstDelivery>
+               <q:dmMessageStatus>6</q:dmMessageStatus>
+               <q:dmAttachmentSize>587</q:dmAttachmentSize>
+               <q:dmDeliveryTime>2018-04-23T11:16:01.658+02:00</q:dmDeliveryTime>
+               <q:dmAcceptanceTime>2018-04-23T11:35:46.034+02:00</q:dmAcceptanceTime>
+            </q:dmRecord>
+         </q:dmRecords>
+         <q:dmStatus>
+            <q:dmStatusCode>0000</q:dmStatusCode>
+            <q:dmStatusMessage>Provedeno úspěšně.</q:dmStatusMessage>
+         </q:dmStatus>
+      </q:GetListOfSentMessagesResponse>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
