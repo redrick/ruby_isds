@@ -15,6 +15,8 @@ RSpec.describe RubyIsds::Responses::Db::Body do
 
       expect(result).to be_a(RubyIsds::Responses::Db::Body)
       expect(result.dbState).to eq('1')
+      expect(result).not_to respond_to('xmlns:q')
+      expect(result).not_to respond_to('xmlns:xsi')
     end
   end
 end
