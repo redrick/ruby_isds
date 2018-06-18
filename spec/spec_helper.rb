@@ -21,4 +21,11 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+
+  RubyIsds.configure do |c|
+    c.data_box = 'mxbf8u6'
+    c.username = '8s53q2'
+    c.password = 'n9y4BfM3tedosqHJ'
+    c.env = :development
+  end
 end

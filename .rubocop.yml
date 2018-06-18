@@ -13,7 +13,7 @@ Metrics/LineLength:
 Documentation:
   Enabled: false
 
-Style/VariableName:
+Naming/VariableName:
   Enabled: false
 
 Naming/UncommunicativeMethodParamName:
