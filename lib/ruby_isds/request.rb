@@ -6,6 +6,10 @@ module RubyIsds
       end if params.any?
     end
 
+    def self.call(params = {})
+      new(params).call
+    end
+
     # rubocop:disable Metrics/AbcSize
     def call
       uri = URI(full_url)

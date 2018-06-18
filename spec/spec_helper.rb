@@ -10,6 +10,9 @@ WebMock.disable_net_connect!(allow_localhost: true)
 require 'simplecov'
 SimpleCov.start
 
+# way to also load shared examples and what not..
+Dir['./spec/support/**/*.rb'].sort.each { |f| require f }
+
 RSpec.configure do |config|
   config.example_status_persistence_file_path = '.rspec_status'
 
