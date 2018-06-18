@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://ws1.czebox.cz/DS/df
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="utf-8"?>
+        <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v20="http://isds.czechpoint.cz/v20">
+          <soapenv:Header/>
+          <soapenv:Body>
+            <v20:FindDataBox>
+              <v20:dbOwnerInfo>
+                <v20:dbID/>
+                <v20:dbType>FO</v20:dbType>
+                <v20:ic/>
+                <v20:pnFirstName/>
+                <v20:pnMiddleName/>
+                <v20:pnLastName>Antas</v20:pnLastName>
+                <v20:pnLastNameAtBirth/>
+                <v20:firmName/>
+                <v20:biDate/>
+                <v20:biCity/>
+                <v20:biCounty/>
+                <v20:biState/>
+                <v20:adCity/>
+                <v20:adStreet/>
+                <v20:adNumberInStreet/>
+                <v20:adNumberInMunicipality/>
+                <v20:adZipCode/>
+                <v20:adState/>
+                <v20:nationality/>
+                <v20:email/>
+                <v20:telNumber/>
+                <v20:identifier/>
+                <v20:registryCode/>
+                <v20:dbState/>
+                <v20:dbEffectiveOVM/>
+                <v20:dbOpenAddressing/>
+              </v20:dbOwnerInfo>
+            </v20:FindDataBox>
+          </soapenv:Body>
+        </soapenv:Envelope>
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml;charset=utf-8
+    body:
+      encoding: UTF-8
+      string: <?xml version='1.0' encoding='utf-8'?><SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"><SOAP-ENV:Body><p:FindDataBoxResponse
+        xmlns:p="http://isds.czechpoint.cz/v20" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><p:dbResults></p:dbResults><p:dbStatus><p:dbStatusCode>0002</p:dbStatusCode><p:dbStatusMessage>Podmínkám
+        neodpovídá žádná datová schránka.</p:dbStatusMessage></p:dbStatus></p:FindDataBoxResponse></SOAP-ENV:Body></SOAP-ENV:Envelope>
+    http_version:
+  recorded_at: Mon, 18 Jun 2018 13:23:52 GMT
+recorded_with: VCR 3.0.3

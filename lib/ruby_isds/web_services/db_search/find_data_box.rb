@@ -1,8 +1,10 @@
+##
+# FIXME: Owner info not parsed correctly, just Hash of stuff
 module RubyIsds
   module WebServices
     module DbSearch
       class FindDataBox < ::RubyIsds::WebServices::DbSearch::Request
-        ATTRS = %i[dbOwnerInfo dbID dbType ic pnFirstName pnMiddleName
+        ATTRS = %i[dbID dbType ic pnFirstName pnMiddleName
                    pnLastName pnLastNameAtBirth firmName biDate biCity biCounty
                    biState adCity adStreet adNumberInStreet adNumberInMunicipality
                    adZipCode adState nationality email telNumber identifier
