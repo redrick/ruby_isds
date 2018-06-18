@@ -15,8 +15,7 @@ module RubyIsds
 
     def self.find(dmID)
       RubyIsds::WebServices::DmOperations::MessageDownload
-        .new(dmID: dmID)
-        .call
+        .call(dmID: dmID)
     end
 
     def download(destination = '/tmp')
@@ -39,64 +38,52 @@ module RubyIsds
 
     def verify
       RubyIsds::WebServices::DmInfo::VerifyMessage
-        .new(dmID: dmID)
-        .call
+        .call(dmID: dmID)
     end
 
     def authenticate
       RubyIsds::WebServices::DmOperations::AuthenticateMessage
-        .new(dmMessage: signed.body.dmSignature)
-        .call
+        .call(dmMessage: signed.body.dmSignature)
     end
 
     def signed
       RubyIsds::WebServices::DmOperations::SignedMessageDownload
-        .new(dmID: dmID)
-        .call
+        .call(dmID: dmID)
     end
 
     def author
       RubyIsds::WebServices::DmInfo::GetMessageAuthor
-        .new(dmID: dmID)
-        .call
+        .call(dmID: dmID)
     end
 
-    ##
-    # FIXME: needs to parse the response.... is gibberish now...
     def delivery_info
       RubyIsds::WebServices::DmInfo::GetDeliveryInfo
-        .new(dmID: dmID)
-        .call
+        .call(dmID: dmID)
     end
 
     def state_changes(options = {})
       RubyIsds::WebServices::DmInfo::GetMessageStateChanges
-        .new(options)
-        .call
+        .call(options)
     end
 
     def envelope
       RubyIsds::WebServices::DmInfo::MessageEnvelopeDownload
-        .new(dmID: dmID)
-        .call
+        .call(dmID: dmID)
     end
 
     def confirm_delivery
       RubyIsds::WebServices::DmInfo::ConfirmDelivery
-        .new(dmID: dmID)
-        .call
+        .call(dmID: dmID)
     end
 
     def mark_as_downloaded
       RubyIsds::WebServices::DmInfo::MarkMessageAsDownloaded
-        .new(dmID: dmID)
-        .call
+        .call(dmID: dmID)
     end
 
     def destroy(options = {})
       RubyIsds::WebServices::DmInfo::EraseMessage
-        .new(options.merge(dmID: dmID))
-        .call
+        .call(options.merge(dmID: dmID))
     end
 
     def sent?
