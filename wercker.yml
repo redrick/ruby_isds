@@ -2,6 +2,11 @@ box: ruby
 build:
   steps:
     - bundle-install
+
+    - script:
+      name: run rubocop
+      code: bundle exec rubocop
+
     - script:
       name: rspec
       code: bundle exec rspec
