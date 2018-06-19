@@ -24,7 +24,10 @@ RSpec.describe RubyIsds::WebServices::DmInfo::GetListOfReceivedMessages do
 
       VCR.use_cassette 'web_services/dm_info/get_list_of_received_messages' do
         result = web_service.call
-        expect(result).to be_a(Array)
+        expect(result).to be_a(RubyIsds::Responses::Messages::Collection)
+        expect(result.status).to be_a(RubyIsds::Responses::Dm::Status)
+        expect(result.status.code).to eq('0000')
+        expect(result.status.message).to eq('Provedeno úspěšně.')
       end
     end
   end
