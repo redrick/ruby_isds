@@ -1,0 +1,33 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://ws1.czebox.cz/DS/dx
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="utf-8"?>
+        <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v20="http://isds.czechpoint.cz/v20">
+          <soapenv:Header/>
+          <soapenv:Body>
+            <v20:VerifyMessage>
+              <v20:dmID>6495272</v20:dmID>
+            </v20:VerifyMessage>
+          </soapenv:Body>
+        </soapenv:Envelope>
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml;charset=utf-8
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version='1.0' encoding='utf-8'?><SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><SOAP-ENV:Body><q:VerifyMessageResponse xmlns:q="http://isds.czechpoint.cz/v20" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><q:dmHash algorithm="SHA-256">RLQOGdZ0K+GbUn9923r5vHjkWtnGhNUdM1Z5b5lAJQI=
+        </q:dmHash><q:dmStatus><q:dmStatusCode>0000</q:dmStatusCode><q:dmStatusMessage>Provedeno úspěšně.</q:dmStatusMessage></q:dmStatus></q:VerifyMessageResponse></SOAP-ENV:Body></SOAP-ENV:Envelope>
+    http_version:
+  recorded_at: Tue, 19 Jun 2018 15:42:35 GMT
+recorded_with: VCR 3.0.3

@@ -17,12 +17,17 @@ RSpec.describe RubyIsds::DataMessage do
 
     describe '#author' do
       it 'displays author information' do
-        VCR.use_cassette 'data_message/author' do
-          @author = @message.author
-        end
+        expect(RubyIsds::WebServices::DmInfo::GetMessageAuthor)
+          .to receive(:call).with(dmID: '6427668')
+        @message.author
+      end
+    end
 
-        expect(@author.body.userType).to eq('OFFICIAL')
-        expect(@author.body.authorName).to be_nil
+    describe '#verify' do
+      it 'verifies message' do
+        expect(RubyIsds::WebServices::DmInfo::VerifyMessage)
+          .to receive(:call).with(dmID: '6427668')
+        @message.verify
       end
     end
   end

@@ -11,7 +11,7 @@ http_interactions:
           <soapenv:Header/>
           <soapenv:Body>
             <v20:GetMessageAuthor>
-              <v20:dmID>6427668</v20:dmID>
+              <v20:dmID>6495272</v20:dmID>
             </v20:GetMessageAuthor>
           </soapenv:Body>
         </soapenv:Envelope>
@@ -27,9 +27,9 @@ http_interactions:
       encoding: UTF-8
       string: <?xml version='1.0' encoding='utf-8'?><SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
         xmlns:xsd="http://www.w3.org/2001/XMLSchema"><SOAP-ENV:Body><q:GetMessageAuthorResponse
-        xmlns:q="http://isds.czechpoint.cz/v20" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><q:userType>OFFICIAL</q:userType><q:authorName
+        xmlns:q="http://isds.czechpoint.cz/v20" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><q:userType>PRIMARY_USER</q:userType><q:authorName
         xsi:nil="true"></q:authorName><q:dmStatus><q:dmStatusCode>0000</q:dmStatusCode><q:dmStatusMessage>Provedeno
         úspěšně.</q:dmStatusMessage></q:dmStatus></q:GetMessageAuthorResponse></SOAP-ENV:Body></SOAP-ENV:Envelope>
     http_version:
-  recorded_at: Tue, 19 Jun 2018 14:29:55 GMT
+  recorded_at: Tue, 19 Jun 2018 15:25:23 GMT
 recorded_with: VCR 3.0.3
