@@ -28,6 +28,8 @@ RSpec.describe RubyIsds::WebServices::DmInfo::GetListOfReceivedMessages do
         expect(result.status).to be_a(RubyIsds::Responses::Dm::Status)
         expect(result.status.code).to eq('0000')
         expect(result.status.message).to eq('Provedeno úspěšně.')
+
+        expect(result.messages.first).to be_a(RubyIsds::DataMessage)
       end
     end
   end

@@ -1,7 +1,5 @@
 # RubyIsds [![wercker status](https://app.wercker.com/status/04043d3ae16228db7dc8d9d3ae51d1e6/s/master "wercker status")](https://app.wercker.com/project/byKey/04043d3ae16228db7dc8d9d3ae51d1e6)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/ruby_isds`. To experiment with that code, run `bin/console` for an interactive prompt.
-
 TODO: Delete this and the text above, and describe your gem
 
 ## Installation
@@ -37,6 +35,10 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
+## Thanks
+
+Many thanks to Petr Písař <petr.pisar@atlas.cz> for writing awesome libisds C library and compiling many usefull information around ISDS :)
 
 ## Code of Conduct
 

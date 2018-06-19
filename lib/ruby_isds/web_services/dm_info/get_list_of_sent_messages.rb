@@ -18,7 +18,7 @@ module RubyIsds
         end
 
         def call_reponse_wrapper(response)
-          response_wrapper.new(response).messages
+          response_wrapper.new(response)
         end
       end
     end
