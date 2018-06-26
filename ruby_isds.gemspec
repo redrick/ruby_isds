@@ -40,6 +40,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'webmock', '~> 3.0'
   spec.add_development_dependency 'overcommit'
   spec.add_development_dependency 'guard-rspec'
+  spec.add_development_dependency 'timecop'
 
   spec.add_dependency 'nokogiri'
   spec.add_dependency 'activesupport'

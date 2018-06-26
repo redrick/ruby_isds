@@ -24,5 +24,10 @@ module RubyIsds
       RubyIsds::WebServices::DmInfo::GetListOfSentMessages
         .call(options)
     end
+
+    def self.state_changes(options = {})
+      RubyIsds::WebServices::DmInfo::GetMessageStateChanges
+        .call(options)
+    end
   end
 end

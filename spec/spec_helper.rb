@@ -3,6 +3,7 @@ require 'ruby_isds'
 
 require 'support/vcr'
 require 'pry'
+require 'timecop'
 
 require 'webmock/rspec'
 WebMock.disable_net_connect!(allow_localhost: true)

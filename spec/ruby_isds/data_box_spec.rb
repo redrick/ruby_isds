@@ -43,4 +43,13 @@ RSpec.describe RubyIsds::DataBox do
       RubyIsds::DataBox.sent
     end
   end
+
+  describe '.state_changes' do
+    it 'correctly call underlying web service' do
+      expect(::RubyIsds::WebServices::DmInfo::GetMessageStateChanges)
+        .to receive(:call)
+
+      RubyIsds::DataBox.state_changes
+    end
+  end
 end

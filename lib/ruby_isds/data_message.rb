@@ -61,11 +61,6 @@ module RubyIsds
         .call(dmID: dmID)
     end
 
-    def state_changes(options = {})
-      RubyIsds::WebServices::DmInfo::GetMessageStateChanges
-        .call(options)
-    end
-
     def envelope
       RubyIsds::WebServices::DmInfo::MessageEnvelopeDownload
         .call(dmID: dmID)
