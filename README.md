@@ -38,13 +38,52 @@ This gem provides you with 2 basic classes and those are:
 - `RubyIsds::DataBox` (operations and manipulation around data box itself)
 - `RubyIsds::DataMessage` (operations and manipulation with message)
 
-Their public API looks like so:
+Kinda important to mention is that results of calls are trying to be the same each time of course and in form of neat object that looks like this:
+
+```ruby
+=> #<RubyIsds::WebServices::DbSearch::Response:0x00007fd3d44f0fd8
+ @body=#<RubyIsds::Responses::Db::Body:0x00007fd3d449b808 @ciRecords=nil, @currentCredit="596400", @notifEmail=nil>,
+ @response=
+  {"Envelope"=>
+    {"xmlns:SOAP_ENV"=>"http://schemas.xmlsoap.org/soap/envelope/",
+     "xmlns:xsd"=>"http://www.w3.org/2001/XMLSchema",
+     "Body"=>{"DataBoxCreditInfoResponse"=>{"xmlns:p"=>"http://isds.czechpoint.cz/v20", "xmlns:xsi"=>"http://www.w3.org/2001/XMLSchema-instance", "currentCredit"=>"596400", "notifEmail"=>{"xsi:nil"=>"true"}, "ciRecords"=>nil, "dbStatus"=>{"dbStatusCode"=>"0000", "dbStatusMessage"=>"Provedeno úspěšně."}}}}},
+ @status=#<RubyIsds::Responses::Db::Status:0x00007fd3d449be48 @code="0000", @message="Provedeno úspěšně.">>
+```
+
+To take it apart consist of:
+- `body` -> in case of request for messages will be `messages` is parsed body taking original attribute names and their values
+  - inspect and use like so:
+  ```ruby
+  > result.body.currentCredit
+  => "596400"
+  ```
+- `status` -> always contains status information in form of `code` and `messsage`
+- `response` -> simply whole original XML response parsed into Hash for better usage
+
+Public API looks like so:
 
 ### RubyIsds::DataBox
 
 #### .check
 
-#### .find_by
+checking the status
+
+```ruby
+> RubyIsds::DataBox.check
+
+=> #<RubyIsds::WebServices::DbSearch::Response:0x00007fd3d68487d8
+ @body=#<RubyIsds::Responses::Db::Body:0x00007fd3d41ad2e0 @dbState="1">,
+ @response=
+  {"Envelope"=>
+    {"xmlns:SOAP_ENV"=>"http://schemas.xmlsoap.org/soap/envelope/",
+     "xmlns:xsd"=>"http://www.w3.org/2001/XMLSchema",
+     "Body"=>{"CheckDataBoxResponse"=>{"xmlns:p"=>"http://isds.czechpoint.cz/v20", "xmlns:xsi"=>"http://www.w3.org/2001/XMLSchema-instance", "dbState"=>"1", "dbStatus"=>{"dbStatusCode"=>"0000", "dbStatusMessage"=>"Provedeno úspěšně."}}}}},
+ @status=#<RubyIsds::Responses::Db::Status:0x00007fd3d41ae280 @code="0000", @message="Provedeno úspěšně.">>
+```
+
+
+#### .find
 
 #### .credit_info
 
@@ -60,19 +99,32 @@ Their public API looks like so:
 #### .find
 
 #### #download
+
 #### #verify
+
 #### #authenticate
+
 #### #signed
+
 #### #author
+
 #### #delivery_info
+
 #### #envelope
+
 #### #confirm_delivery
+
 #### #mark_as_downloaded
+
 #### #destroy
+
 #### #sent?
+
 #### #received?
 
+### Help
 
+If in doubt, or my so called 'README' seems not that helpful, please refer to [ISDS provozni rad](https://www.datoveschranky.info/dulezite-informace/provozni-rad-isds)
 
 ## Development
 
