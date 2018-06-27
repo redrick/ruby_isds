@@ -1,6 +1,6 @@
 # Work in Progress
 
-# RubyIsds [![wercker status](https://app.wercker.com/status/04043d3ae16228db7dc8d9d3ae51d1e6/s/master "wercker status")](https://app.wercker.com/project/byKey/04043d3ae16228db7dc8d9d3ae51d1e6)
+# RubyIsds [![wercker status](https://app.wercker.com/status/04043d3ae16228db7dc8d9d3ae51d1e6/s/master "wercker status")](https://app.wercker.com/project/byKey/04043d3ae16228db7dc8d9d3ae51d1e6) [![Maintainability](https://api.codeclimate.com/v1/badges/eb20cde530fb8d1690cd/maintainability)](https://codeclimate.com/github/redrick/ruby_isds/maintainability)
 
 Wrapper for API love [ISDS](https://www.datoveschranky.info/) shares with us through this XML API.
 
