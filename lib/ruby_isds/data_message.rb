@@ -26,10 +26,10 @@ module RubyIsds
 
     def initialize(params = {})
       @params = params.dup
-      status_info = @params.delete('dmDm')
+      @status_info = @params.delete('dmDm')
       @dmAttachments = load_attachments
       @dmEvents = load_events
-      unified_params = status_info ? status_info.merge(@params) : params
+      unified_params = @status_info ? @status_info.merge(@params) : params
       unified_params.each do |key, value|
         raise "Not valid attribute of DataMessage #{key}" unless ATTRIBUTES.include?(key)
         instance_variable_set("@#{key}", parsed_value(value))
@@ -104,8 +104,8 @@ module RubyIsds
     end
 
     def load_attachments
-      return {} if @params['dmFiles'].blank?
-      attachments_hash = @params.delete('dmFiles')['dmFile']
+      return {} if @status_info&.dig('dmFiles').blank?
+      attachments_hash = @status_info.delete('dmFiles')['dmFile']
       if attachments_hash.is_a?(Array)
         attachments_hash.map do |attachment|
           ::RubyIsds::Responses::Messages::Attachment.new(attachment)
