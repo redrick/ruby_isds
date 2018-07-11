@@ -1,6 +1,6 @@
 # Work in Progress
 
-# RubyIsds [![wercker status](https://app.wercker.com/status/04043d3ae16228db7dc8d9d3ae51d1e6/s/master "wercker status")](https://app.wercker.com/project/byKey/04043d3ae16228db7dc8d9d3ae51d1e6)
+# RubyIsds [![wercker status](https://app.wercker.com/status/04043d3ae16228db7dc8d9d3ae51d1e6/s/master "wercker status")](https://app.wercker.com/project/byKey/04043d3ae16228db7dc8d9d3ae51d1e6) [![Maintainability](https://api.codeclimate.com/v1/badges/eb20cde530fb8d1690cd/maintainability)](https://codeclimate.com/github/redrick/ruby_isds/maintainability)
 
 Wrapper for API love [ISDS](https://www.datoveschranky.info/) shares with us through this XML API.
 
@@ -85,16 +85,108 @@ checking the status
 ```
 
 
-#### .find
+#### .find_by
+
+You can find any data box by searching like so:
+
+```ruby
+> RubyIsds::DataBox.find_by(dbType: 'FO', pnLastName: 'Anta')
+
+=> #<RubyIsds::WebServices::DbSearch::Response:0x00007f9986b4c090
+ @body=#<RubyIsds::Responses::Db::Body:0x00007f9987823f98 @dbResults=false>,
+ @response=
+  {"Envelope"=>
+    {"xmlns:SOAP_ENV"=>"http://schemas.xmlsoap.org/soap/envelope/",
+     "xmlns:xsd"=>"http://www.w3.org/2001/XMLSchema",
+     "Body"=>
+      {"FindDataBoxResponse"=>
+        {"xmlns:p"=>"http://isds.czechpoint.cz/v20",
+         "xmlns:xsi"=>"http://www.w3.org/2001/XMLSchema-instance",
+         "dbResults"=>
+          {"dbOwnerInfo"=>
+            {"dbID"=>"mxbf8u6",
+             "dbType"=>"FO",
+             "ic"=>{"xsi:nil"=>"true"},
+             "pnFirstName"=>"Andrej",
+             "pnMiddleName"=>{"xsi:nil"=>"true"},
+             "pnLastName"=>"Antaš",
+             "pnLastNameAtBirth"=>{"xsi:nil"=>"true"},
+             "firmName"=>{"xsi:nil"=>"true"},
+             "biDate"=>"1990-01-16",
+             "biCity"=>"*",
+             "biCounty"=>"*",
+             "biState"=>"*",
+             "adCity"=>"Praha 5",
+             "adStreet"=>"Pekařská",
+             "adNumberInStreet"=>"10a",
+             "adNumberInMunicipality"=>"695",
+             "adZipCode"=>"15500",
+             "adState"=>"CZ",
+             "nationality"=>"*",
+             "identifier"=>{"xsi:nil"=>"true"},
+             "registryCode"=>{"xsi:nil"=>"true"},
+             "dbState"=>"1",
+             "dbEffectiveOVM"=>"false",
+             "dbOpenAddressing"=>"true"}},
+         "dbStatus"=>{"dbStatusCode"=>"0000", "dbStatusMessage"=>"Provedeno úspěšně."}}}}},
+ @status=#<RubyIsds::Responses::Db::Status:0x00007f9987828c50 @code="0000", @message="Provedeno úspěšně.">>
+ ```
 
 #### .credit_info
 
+For checking your balance (post messages need payments), so you can make sure you have enough before sending a message:
+
+```ruby
+> RubyIsds::DataBox.credit_info
+
+=> #<RubyIsds::WebServices::DbSearch::Response:0x00007f8dd69b6e08
+ @body=#<RubyIsds::Responses::Db::Body:0x00007f8dd699c1e8 @ciRecords=nil, @currentCredit="596400", @notifEmail=nil>,
+ @response=
+  {"Envelope"=>
+    {"xmlns:SOAP_ENV"=>"http://schemas.xmlsoap.org/soap/envelope/",
+     "xmlns:xsd"=>"http://www.w3.org/2001/XMLSchema",
+     "Body"=>{"DataBoxCreditInfoResponse"=>{"xmlns:p"=>"http://isds.czechpoint.cz/v20", "xmlns:xsi"=>"http://www.w3.org/2001/XMLSchema-instance", "currentCredit"=>"596400", "notifEmail"=>{"xsi:nil"=>"true"}, "ciRecords"=>nil, "dbStatus"=>{"dbStatusCode"=>"0000", "dbStatusMessage"=>"Provedeno úspěšně."}}}}},
+ @status=#<RubyIsds::Responses::Db::Status:0x00007f8dd699c3a0 @code="0000", @message="Provedeno úspěšně.">>
+```
+
 #### .received
+
+Listing all received messages:
+
+```ruby
+> RubyIsds::DataBox.received
+
+=> #<RubyIsds::Responses::Messages::Collection:0x00007f99882e6048
+ @messages=
+  [
+  ...
+  ],
+ @status=#<RubyIsds::Responses::Dm::Status:0x00007f9986c26718 @code="0000", @message="Provedeno úspěšně.">>
+```
+
+Message responses are stubbed here in response, will be explain down in DataMessage docs
 
 #### .sent
 
+
+Listing all received messages:
+
+```ruby
+> RubyIsds::DataBox.sent
+
+=> #<RubyIsds::Responses::Messages::Collection:0x00007f99882e6048
+ @messages=
+  [
+  ...
+  ],
+ @status=#<RubyIsds::Responses::Dm::Status:0x00007f9986c26718 @code="0000", @message="Provedeno úspěšně.">>
+```
+
+Message responses are stubbed here in response, will be explain down in DataMessage docs
+
 #### .state_changes
 
+TODO
 
 ### RubyIsds::DataMessage
 
