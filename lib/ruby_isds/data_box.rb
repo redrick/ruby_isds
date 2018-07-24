@@ -29,5 +29,9 @@ module RubyIsds
       RubyIsds::WebServices::DmInfo::GetMessageStateChanges
         .call(options)
     end
+
+    def self.ping
+      RubyIsds::WebServices::DmOperations::Ping.call
+    end
   end
 end
