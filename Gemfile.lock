@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ruby_isds (0.10.1)
+    ruby_isds (0.10.3)
       activesupport
       nokogiri
 

@@ -111,7 +111,7 @@ module RubyIsds
           ::RubyIsds::Responses::Messages::Attachment.new(attachment)
         end
       else
-        ::RubyIsds::Responses::Messages::Attachment.new(attachments_hash)
+        [::RubyIsds::Responses::Messages::Attachment.new(attachments_hash)]
       end
     end
 
