@@ -11,6 +11,7 @@ module RubyIsds
         end
 
         def load_messages
+          return [] if results.blank?
           return [::RubyIsds::DataMessage.new(results)] if results.is_a?(Hash)
           results.map do |result|
             ::RubyIsds::DataMessage.new(result)
@@ -20,7 +21,7 @@ module RubyIsds
         private
 
         def results
-          parsed_body['dmRecords']['dmRecord']
+          parsed_body['dmRecords'].try(:[], 'dmRecord')
         end
       end
     end
