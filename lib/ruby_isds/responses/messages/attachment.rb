@@ -12,9 +12,11 @@ module RubyIsds
         end
 
         def download(destination = '/tmp')
-          File.open("#{destination}/#{@file_name}", 'wb') do |f|
+          file_destination = "#{destination}/#{@file_name}"
+          File.open(file_destination, 'wb') do |f|
             f.write(@decoded_content)
           end
+          file_destination
         end
       end
     end
