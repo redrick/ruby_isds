@@ -19,9 +19,11 @@ module RubyIsds
     end
 
     def download(destination = '/tmp')
-      File.open("#{destination}/#{dmID}.zfo", 'wb') do |f|
+      path = "#{destination}/#{dmID}.zfo"
+      File.open(path, 'wb') do |f|
         f.write(Base64.decode64(signed.body.dmSignature))
       end
+      path
     end
 
     def initialize(params = {})
