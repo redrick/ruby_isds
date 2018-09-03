@@ -9,7 +9,7 @@ RSpec.describe RubyIsds::WebServices::DbSearch::FindDataBox do
       expect(web_service.to_xml)
         .to eq("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soapenv:Envelope "\
                "xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" "\
-               "xmlns:v20=\"http://isds.czechpoint.cz/v20\">\n  <soapenv:Header/>\n  "\
+               "xmlns:v20=\"https://isds.czechpoint.cz/v20\">\n  <soapenv:Header/>\n  "\
                "<soapenv:Body>\n    <v20:FindDataBox>\n      <v20:dbOwnerInfo>\n"\
                "        <v20:dbID/>\n        <v20:dbType>FO</v20:dbType>\n        "\
                "<v20:ic/>\n        <v20:pnFirstName/>\n        <v20:pnMiddleName/>\n"\

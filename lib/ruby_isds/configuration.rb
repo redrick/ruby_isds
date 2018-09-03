@@ -36,7 +36,7 @@ module RubyIsds
 
     def api_domain
       case @env
-      when :production then 'https://ws1c.mojedatovaschranka.cz'
+      when :production then 'https://ws1.mojedatovaschranka.cz'
       else 'https://ws1.czebox.cz'
       end
     end

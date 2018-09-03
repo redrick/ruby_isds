@@ -13,14 +13,16 @@ module RubyIsds
     # rubocop:disable Metrics/AbcSize
     def call
       uri = URI(full_url)
+
       request = Net::HTTP::Post.new(uri)
       default_headers.each { |k, v| request[k] = v }
       request.body = to_xml
       request.basic_auth RubyIsds.configuration.username, RubyIsds.configuration.password
-      response = Net::HTTP.start(uri.hostname, uri.port,
-                                 use_ssl: uri.scheme == 'https') do |http|
-        http.request(request)
-      end
+
+      https = Net::HTTP.new(uri.hostname, uri.port)
+      https.use_ssl = true
+      https.ssl_version = :TLSv1_2_client
+      response = https.request(request)
       call_reponse_wrapper(response)
     end
     # rubocop:enable Metrics/AbcSize
@@ -91,7 +93,7 @@ module RubyIsds
     # URL will differ based on endpoint that it accesses
     #
     def xml_url
-      "http://#{RubyIsds.configuration.xml_url}"
+      "https://#{RubyIsds.configuration.xml_url}"
     end
 
     ##

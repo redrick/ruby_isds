@@ -1,4 +1,5 @@
 require 'net/http'
+require 'net/https'
 require 'base64'
 require 'nokogiri'
 require 'active_support/core_ext/hash'

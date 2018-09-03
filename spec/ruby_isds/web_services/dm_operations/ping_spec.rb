@@ -8,7 +8,7 @@ RSpec.describe RubyIsds::WebServices::DmOperations::Ping do
       expect(web_service.to_xml)
         .to eq("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"\
                "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org"\
-               "/soap/envelope/\" xmlns:v20=\"http://isds.czechpoint.cz/v20\">\n"\
+               "/soap/envelope/\" xmlns:v20=\"https://isds.czechpoint.cz/v20\">\n"\
                "  <soapenv:Header/>\n  <soapenv:Body>\n    <v20:DummyOperation/>\n"\
                "  </soapenv:Body>\n</soapenv:Envelope>\n")
     end

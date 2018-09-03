@@ -11,7 +11,7 @@ module RubyIsds
         end
 
         def xml_url
-          "http://isds.#{RubyIsds.configuration.xml_url}/v20"
+          "https://isds.#{RubyIsds.configuration.xml_url}/v20"
         end
       end
     end

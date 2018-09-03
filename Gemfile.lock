@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ruby_isds (0.10.5)
+    ruby_isds (0.11.0)
       activesupport
       nokogiri
 
@@ -136,4 +136,4 @@ DEPENDENCIES
   webmock (~> 3.0)
 
 BUNDLED WITH
-   1.16.2
+   1.16.4
