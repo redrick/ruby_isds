@@ -2,6 +2,8 @@ module RubyIsds
   class Configuration
     attr_writer :data_box, :username, :password, :env, :api_url
 
+    ALLOWED_PRODUCTION_SYNTAX = [:production, 'production'].freeze
+
     def initialize
       @username = nil
       @password = nil
@@ -35,17 +37,17 @@ module RubyIsds
     end
 
     def api_domain
-      case @env
-      when :production then 'https://ws1.mojedatovaschranka.cz'
-      else 'https://ws1.czebox.cz'
-      end
+      return 'https://ws1.mojedatovaschranka.cz' if production?
+      'https://ws1.czebox.cz'
     end
 
     def xml_url
-      case @env
-      when :production then 'mojedatovaschranka.cz'
-      else 'czechpoint.cz'
-      end
+      return 'mojedatovaschranka.cz' if production?
+      'czechpoint.cz'
+    end
+
+    def production?
+      ALLOWED_PRODUCTION_SYNTAX.include?(@env)
     end
   end
 end
