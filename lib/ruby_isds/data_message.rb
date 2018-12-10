@@ -63,6 +63,11 @@ module RubyIsds
         .call(dmID: dmID)
     end
 
+    def signed_delivery_info
+      RubyIsds::WebServices::DmInfo::GetSignedDeliveryInfo
+        .call(dmID: dmID)
+    end
+
     def envelope
       RubyIsds::WebServices::DmInfo::MessageEnvelopeDownload
         .call(dmID: dmID)
