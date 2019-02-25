@@ -41,6 +41,7 @@ require 'ruby_isds/web_services/db_search/p_d_z_info'
 require 'ruby_isds/web_services/db_search/p_d_z_send_info'
 
 require 'ruby_isds/web_services/db_access/change_isds_password'
+require 'ruby_isds/web_services/db_access/get_owner_info_from_login'
 
 require 'ruby_isds/web_services/dm_info/request'
 require 'ruby_isds/web_services/dm_info/response'

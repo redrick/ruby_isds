@@ -1,6 +1,6 @@
 module RubyIsds
   class Configuration
-    attr_writer :data_box, :username, :password, :env, :api_url
+    attr_writer :data_box, :username, :password, :cert_file, :env, :api_url
 
     ALLOWED_PRODUCTION_SYNTAX = [:production, 'production'].freeze
 
@@ -9,6 +9,7 @@ module RubyIsds
       @password = nil
       @data_box = nil
       @env = nil
+      @cert_file = nil
     end
 
     def data_box
@@ -26,6 +27,13 @@ module RubyIsds
       @password
     end
 
+    def cert_file
+      return nil unless @cert_file
+      # OpenSSL::X509::Certificate.new(File.read(@cert_file))
+      # File.read(@cert_file)
+      @cert_file
+    end
+
     ##
     # env values:
     #   :development (default)
@@ -37,8 +45,13 @@ module RubyIsds
     end
 
     def api_domain
-      return 'https://ws1.mojedatovaschranka.cz' if production?
-      'https://ws1.czebox.cz'
+      if production?
+        return 'https://ws1c.mojedatovaschranka.cz/cert' if @cert_file
+        'https://ws1.mojedatovaschranka.cz'
+      else
+        return 'https://ws1c.czebox.cz/cert' if @cert_file
+        'https://ws1.czebox.cz'
+      end
     end
 
     def xml_url

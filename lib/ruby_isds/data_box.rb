@@ -10,6 +10,10 @@ module RubyIsds
         .call(options)
     end
 
+    def self.owner_info
+      ::RubyIsds::WebServices::DbAccess::GetOwnerInfoFromLogin.call
+    end
+
     def self.credit_info(options = {})
       ::RubyIsds::WebServices::DbSearch::DataBoxCreditInfo
         .call(options.merge(dbID: ::RubyIsds.configuration.data_box))
