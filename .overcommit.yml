@@ -41,6 +41,8 @@ PreCommit:
 
   TrailingWhitespace:
     enabled: true
+    exclude:
+      - 'spec/**/*'
 
   BundleAudit:
     enabled: true

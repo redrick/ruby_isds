@@ -21,16 +21,13 @@ module RubyIsds
 
       https = Net::HTTP.new(uri.hostname, uri.port)
       https.use_ssl = true
+      https.ssl_version = :TLSv1_2_client
       if RubyIsds.configuration.cert_file
-        https.ssl_version = :TLSv1_2
-        # https.ca_path = RubyIsds.configuration.cert_file
         https.verify_mode = OpenSSL::SSL::VERIFY_PEER
-        store = OpenSSL::X509::Store.new
-        store.set_default_paths
-        store.add_file(RubyIsds.configuration.cert_file)
-        https.cert_store = store
+        https.cert = RubyIsds.configuration.cert_file
+        https.key = RubyIsds.configuration.private_key
+        https.verify_depth = 5
       else
-        https.ssl_version = :TLSv1_2_client
         request.basic_auth(
           RubyIsds.configuration.username,
           RubyIsds.configuration.password
