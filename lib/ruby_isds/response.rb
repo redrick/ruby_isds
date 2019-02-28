@@ -7,6 +7,7 @@ module RubyIsds
     end
 
     def parsed_body
+      raise HtmlResponseReceived, @response.inspect unless @response['Envelope'].present?
       @response['Envelope']['Body'][result_key]
     end
 
