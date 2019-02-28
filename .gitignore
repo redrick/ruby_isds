@@ -11,3 +11,5 @@
 .rspec_status
 
 bin/debug_console
+
+.DS_Store

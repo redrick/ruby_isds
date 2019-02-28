@@ -27,6 +27,10 @@ module RubyIsds
         https.cert = RubyIsds.configuration.cert_file
         https.key = RubyIsds.configuration.private_key
         https.verify_depth = 5
+        request.basic_auth(
+          RubyIsds.configuration.data_box,
+          ''
+        )
       else
         request.basic_auth(
           RubyIsds.configuration.username,
