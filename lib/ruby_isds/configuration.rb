@@ -65,7 +65,7 @@ module RubyIsds
         return 'https://ws1c.mojedatovaschranka.cz/cert' if @cert_file
         'https://ws1.mojedatovaschranka.cz'
       else
-        return 'https://ws1c.czebox.cz/cert' if @cert_file
+        return 'https://ws1c.czebox.cz/hspis' if @cert_file
         'https://ws1.czebox.cz'
       end
     end

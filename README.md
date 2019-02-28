@@ -22,7 +22,10 @@ Or install it yourself as:
 
 ## Usage
 
-Before usage please add config (for rails initializer) with following:
+Before usage please add config (for rails initializer) with one of supported
+auth strategies:
+
+### Username + password
 
 ```ruby
 RubyIsds.configure do |c|
@@ -32,6 +35,19 @@ RubyIsds.configure do |c|
   c.env = :development
 end
 ```
+### Server side system certificate
+
+```ruby
+RubyIsds.configure do |c|
+  c.data_box = 'data_box_id'
+  c.cert_file = 'spec/factories/files/certifikat.pem'
+  c.key_file = 'spec/factories/files/test-key.key'
+  c.pass_phrase = 'andrej'
+  c.env = :development
+end
+```
+here `data_box_id` if id of databox you will be accessing, you do not really
+need id of databox used as point from where you access
 
 you do not have to provide `env` in setup unless you go to production, gem
 defaults to `:development` anyway...
@@ -219,6 +235,19 @@ TODO
 ### Help
 
 If in doubt, or my so called 'README' seems not that helpful, please refer to [ISDS provozni rad](https://www.datoveschranky.info/dulezite-informace/provozni-rad-isds)
+
+#### Certificates
+
+Just some helpfull information when you want to use certificate to access
+databoxes:
+
+How to setup and what not in ISDS: [https://www.czebox.cz/static/ISDS/help/page8.html#8_4](https://www.czebox.cz/static/ISDS/help/page8.html#8_4)
+
+Working with DER/PEM and what not around the keys: [https://knowledge.digicert.com/solution/SO26449.html](https://knowledge.digicert.com/solution/SO26449.html)
+
+How to convert windows pfx file exported from keychain into key you need here: [https://www.markbrilman.nl/2011/08/howto-convert-a-pfx-to-a-seperate-key-crt-file/](https://www.markbrilman.nl/2011/08/howto-convert-a-pfx-to-a-seperate-key-crt-file/)
+
+Jus to note here, certificate accepted should be in PEM format and you have to add the private.key with the password to it.
 
 ## Development
 
